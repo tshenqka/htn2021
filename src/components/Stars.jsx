@@ -1,6 +1,4 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import 'typeface-roboto';
 import CircleSharpIcon from '@mui/icons-material/CircleSharp';
 import { Parallax } from 'react-scroll-parallax';
