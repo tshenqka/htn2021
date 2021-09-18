@@ -3,6 +3,8 @@ import Box from '@mui/material/Box';
 import '@fontsource/roboto/300.css';
 import { useLocation } from 'react-router-dom'
 import { Base64 } from 'js-base64';
+import localStorage from 'localStorage';
+import Body from './Body'
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 
@@ -23,7 +25,6 @@ const authRedirectUrl = 'https://accounts.spotify.com/authorize' +
 
 
 function Audio(props) {
-    const [code, setCode] = useState('');
     const [token, setToken] = useState('');
     const location = useLocation();
     useEffect(() => {
@@ -31,14 +32,13 @@ function Audio(props) {
         
         // first, try getting token from local storage
         const localToken = localStorage.getItem('token');
-        if (localToken != undefined) {
+        if (localToken != null) {
             setToken(localToken);
             console.log("token gotten from local storage: ", localToken);
         } else {
             const _code = new URLSearchParams(location.search).get('code');
             if (_code) {
                 console.log(_code);
-                setCode(_code);
                 fetch("https://accounts.spotify.com/api/token",
                 {
                     headers: {
@@ -64,7 +64,7 @@ function Audio(props) {
     
     return(
         <div>
-         {!code && (
+         {!token && (
             <a
                 className="btn btn--loginApp-link"
                 href={authRedirectUrl}
@@ -72,7 +72,9 @@ function Audio(props) {
             Login to Spotify
             </a>
          )}
-         {}
+         {token && (
+             <Body />
+         )}
         </div>
     )
 }
