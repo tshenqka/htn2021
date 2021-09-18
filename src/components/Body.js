@@ -1,5 +1,9 @@
 import React from 'react';
 import '../index.css';
+import { ParallaxProvider } from 'react-scroll-parallax';
+import Title from './Title';
+import Stars from './Stars';
+import SongIcon from './SongIcon';
 
 function Body() {
     return (
