@@ -28,7 +28,7 @@ function SongIcon(props) {
             <Box
                 sx={{
                     display: 'flex', flexWrap: 'wrap', '& > :not(style)': {
-                        m: 1, width: size, height: size, position: 'absolute', top: y, left: x
+                        m: 1, width: size, height: size, position: 'relative', top: y, left: x
                     },
                 }}
             >
@@ -36,10 +36,10 @@ function SongIcon(props) {
             </Box>
             <Fade in={showText}>
                 <Typography component="div">
-                    <Box sx={{ typography: 'h3', color: '#f4cb85', position: 'absolute', top: y + TITLE_Y_POS, left: x + size + TEXT_X_POS}}>
+                    <Box sx={{ typography: 'h3', color: '#f4cb85', position: 'relative', top: y + TITLE_Y_POS, left: x + size + TEXT_X_POS}}>
                         { songName }
                     </Box>
-                    <Box sx={{ typography: 'p', color: '#f4cb85', position: 'absolute', top: y + TEXT_Y_POS, left: x + size + TEXT_X_POS}}>
+                    <Box sx={{ typography: 'p', color: '#f4cb85', position: 'relative', top: y + TEXT_Y_POS, left: x + size + TEXT_X_POS}}>
                         {`by ${artistName}`}
                     </Box>
                 </Typography>

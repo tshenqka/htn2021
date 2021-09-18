@@ -3,14 +3,15 @@ import '../index.css';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Title from './Title';
 import Stars from './Stars';
-import SongIcon from './SongIcon';
+// import SongIcon from './SongIcon';
+import Song from './Song';
 
 function Body() {
     return (
         <ParallaxProvider>
             <Title playlistName="Best Playlist Ever" creatorName="Wolgang Amadeus Mozart"></Title>
             <Stars/>
-            <SongIcon x={500} y={1000} size={200} songName="Willow" artistName="Taylor Swift"/>
+            <Song x={500} y={1000} />
       </ParallaxProvider>
     )
 }
