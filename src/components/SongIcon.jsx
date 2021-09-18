@@ -3,12 +3,14 @@ import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import '@fontsource/roboto/300.css';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import { LocalActivity } from '@mui/icons-material';
 
 const TITLE_Y_POS = 20;
 const TEXT_Y_POS = 80;
 const TEXT_X_POS = 75;
-
-
+const LOC_X_POS = -95;
+const LOC_Y_POS = -50;
 
 function SongIcon(props) {
     const { songName, artistName, albumArtLink, x, y, size} = props;
@@ -34,10 +36,11 @@ function SongIcon(props) {
             >
                 <img src={testArt} style={{ borderRadius: '50%'}} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}/>
             </Box>
+            <LocationOnIcon sx={{ fontSize: 100, color: '#67bfcd', position: 'absolute', top: y + LOC_Y_POS, left: x + size + LOC_X_POS, transform: 'rotate(15deg)'}}/>
             <Fade in={showText}>
                 <Typography component="div">
                     <Box sx={{ typography: 'h3', color: '#f4cb85', position: 'absolute', top: y + TITLE_Y_POS, left: x + size + TEXT_X_POS}}>
-                        { songName }
+                        { `${songName}` }
                     </Box>
                     <Box sx={{ typography: 'p', color: '#f4cb85', position: 'absolute', top: y + TEXT_Y_POS, left: x + size + TEXT_X_POS}}>
                         {`by ${artistName}`}
