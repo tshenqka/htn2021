@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import localStorage from 'localStorage';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 
 function Note(props) {
   const { x, y, size} = props;
@@ -11,7 +10,7 @@ function Note(props) {
   useEffect(() => {
     var obj = localStorage.getItem("note");
     if (obj != null) setValue(obj)
-  })
+  }, [])
 
   const handleChange = (event) => {
     setValue(event.target.value);
@@ -32,16 +31,14 @@ function Note(props) {
             },
         }}
     >
-      <Typography component="div">
-        <TextField
-          id="outlined-multiline-flexible"
-          fullWidth
-          multiline
-          maxRows={4}
-          value={value}
-          onChange={handleChange}
-        />
-      </Typography>
+      <TextField
+        id="outlined-multiline-flexible"
+        fullWidth
+        multiline
+        maxRows={4}
+        value={value}
+        onChange={handleChange}
+      />
     </Box>
   )
 }
