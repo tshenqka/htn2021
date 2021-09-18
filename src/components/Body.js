@@ -11,12 +11,12 @@ function Body() {
 
     useEffect(() => {
         coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => table.listRows({useColumnNames: true}).then(res => {
+            var newSongs = []
             res.forEach(row => {
-                var oldSongs = songs;
-                oldSongs.push({id: row.id,
+                newSongs.push({id: row.id,
                     notes: row.values.Notes})
-                setSongs(oldSongs)
             })
+            setSongs(newSongs)
         })))
     }, [])
 
