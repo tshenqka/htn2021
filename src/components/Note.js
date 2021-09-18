@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
-import localStorage from 'localStorage';
+// import localStorage from 'localStorage';
 import Box from '@mui/material/Box';
 import coda from '../coda'
 
@@ -10,7 +10,7 @@ function Note(props) {
 
   useEffect(() => {
     if (initialNotes) setValue(initialNotes)
-  }, [])
+  }, [initialNotes])
 
   const handleChange = (event) => {
     setValue(event.target.value);
