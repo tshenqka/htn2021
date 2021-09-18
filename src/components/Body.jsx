@@ -5,6 +5,7 @@ import Title from './Title';
 import Stars from './Stars';
 import Song from './Song';
 import Audio from './Audio';
+import SongList from './SongList';
 
 function Body() {
     const [alive, setAlive] = React.useState(false);
@@ -17,8 +18,9 @@ function Body() {
         <ParallaxProvider>
             <Title playlistName="Best Playlist Ever" creatorName="Wolgang Amadeus Mozart"></Title>
             <Stars/>
-            <Song x={100} y={650} iconSize={200} noteSize={300} songName="Willow" artistName="Taylor Swift" startSong={startSong}/>
-            <Audio alive={alive} />
+            <SongList/>
+            
+           
       </ParallaxProvider>
     )
 }
