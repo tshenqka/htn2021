@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
+    import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import '@fontsource/roboto/300.css';
 import { Parallax } from 'react-scroll-parallax';

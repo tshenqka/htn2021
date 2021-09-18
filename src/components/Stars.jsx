@@ -39,9 +39,9 @@ function getRandom(arr) {
 
 function Stars(props) {
     return (
-        <>
+        <div style={{position: 'relative'}}>
             { renderStars() }
-        </>
+        </div>
     )
 }
 
