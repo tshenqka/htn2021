@@ -4,7 +4,6 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import '@fontsource/roboto/300.css';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { LocalActivity } from '@mui/icons-material';
 
 const TITLE_Y_POS = 20;
 const TEXT_Y_POS = 80;
