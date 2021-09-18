@@ -12,9 +12,7 @@ export const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "31d37b2e123448e089b6253898f3c854";
 const clientSecret = "392d8c9c429c40aca8be2fa7ad828a75";
 const redirectUri = "http://localhost:3000/";
-const scopes = 'user-read-private user-read-email';
-
-const TOKEN = 'BQDEbr9HQjCp6LNaU_XF2KoWg_fHKTdmnviwkkWeRXMR_TWnNPCV4G4uywFmg3E5L09cJ9mELUn-XW4AKuAnG1EARXOeZWKtQNKrPQSYAi7NFdtzHrfk5lINnSmVxCAkfWfxmgDugcVUR0XBxaZb-Tihqhs6lIEFA5d_wmfuBP_wGPmummn74BEZ1GMiqOArNB4';
+const scopes = 'streaming user-read-private user-read-email user-modify-playback-state user-read-playback-state';
 
 const authRedirectUrl = 'https://accounts.spotify.com/authorize' +
   '?response_type=code' +

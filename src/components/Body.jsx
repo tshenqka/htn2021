@@ -7,12 +7,18 @@ import Song from './Song';
 import Audio from './Audio';
 
 function Body() {
+    const [alive, setAlive] = React.useState(false);
+
+    function startSong() {
+        setAlive(true);
+    }
+
     return (
         <ParallaxProvider>
             <Title playlistName="Best Playlist Ever" creatorName="Wolgang Amadeus Mozart"></Title>
             <Stars/>
-            <Song x={100} y={650} iconSize={200} noteSize={300} songName="Willow" artistName="Taylor Swift"/>
-            <Audio />
+            <Song x={100} y={650} iconSize={200} noteSize={300} songName="Willow" artistName="Taylor Swift" startSong={startSong}/>
+            <Audio alive={alive} />
       </ParallaxProvider>
     )
 }

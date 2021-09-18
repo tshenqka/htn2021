@@ -17,12 +17,13 @@ const LOC_Y_POS = -50;
 
 
 function Song(props) {
-  const { songName, artistName, x, y, iconSize, noteSize} = props;
+  const { songName, artistName, x, y, iconSize, noteSize, startSong} = props;
 
   const [showText, setShowText] = React.useState(false);
   const testArt = 'https://media.pitchfork.com/photos/5f1e2abad421092dd8f6c7ca/1:1/w_320/Taylor_Swift_folklore.jpeg'
 
   function onMouseEnter() {
+      startSong();
       setShowText(!showText);
       console.log("ENTER");
   }
