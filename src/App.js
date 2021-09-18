@@ -1,19 +1,18 @@
-import './App.css';
-import Stars from './components/Stars';
-import Title from './components/Title';
-import { ParallaxProvider } from 'react-scroll-parallax';
-import SongIcon from './components/SongIcon';
+import './index.css';
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
+import Body from './components/Body';
 
 function App() {
   return (
-    <div className="App">
-      
-      <ParallaxProvider>
-        <Title playlistName="Best Playlist Ever" creatorName="Wolgang Amadeus Mozart"></Title>
-        <Stars/>
-        <SongIcon x={500} y={1000} size={200} songName="Willow" artistName="Taylor Swift"/>
-      </ParallaxProvider>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <Body/>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
