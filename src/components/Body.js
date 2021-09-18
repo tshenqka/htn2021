@@ -11,7 +11,7 @@ function Body() {
         <ParallaxProvider>
             <Title playlistName="Best Playlist Ever" creatorName="Wolgang Amadeus Mozart"></Title>
             <Stars/>
-            <Song x={50} y={150} iconSize={200} noteSize={300} songName="Willow" artistName="Taylor Swift"/>
+            <Song x={100} y={650} iconSize={200} noteSize={300} songName="Willow" artistName="Taylor Swift"/>
       </ParallaxProvider>
     )
 }

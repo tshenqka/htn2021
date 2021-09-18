@@ -4,14 +4,17 @@ import Box from '@mui/material/Box';
 // import { ParallaxProvider } from 'react-scroll-parallax';
 // import Title from './Title';
 // import Stars from './Stars';
-import SongIcon from './SongIcon';
+// import SongIcon from './SongIcon';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import Note from './Note';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const TITLE_Y_POS = -200;
 const TEXT_Y_POS = 80;
 const TEXT_X_POS = 150;
+const LOC_X_POS = -95;
+const LOC_Y_POS = -50;
 
 
 function Song(props) {
@@ -30,27 +33,28 @@ function Song(props) {
       console.log("LEAVE");
   }
   return (
-    <Box style={{ position: 'absolute', top: 500, left: 50}}>
+    <Box style={{ position: 'absolute', top: y, left: x}}>
       <Box
           sx={{
               display: 'flex', flexWrap: 'wrap', '& > :not(style)': {
-                  m: 1, width: iconSize, height: iconSize, position: 'relative', top: y, left: x
+                  m: 1, width: iconSize, height: iconSize, position: 'relative', top: 0, left: 0
               },
           }}
       >
         <img src={testArt} style={{ borderRadius: '50%'}} onClick={onMouseEnter} />
       </Box>
+      <LocationOnIcon sx={{ fontSize: 100, color: '#67bfcd', position: 'absolute', top: LOC_Y_POS, left: iconSize + LOC_X_POS, transform: 'rotate(15deg)'}}/>
       <Fade in={showText}>
         <div>
         <Typography component="div">
-              <Box sx={{ typography: 'h3', color: '#f4cb85', position: 'relative', top: y + TITLE_Y_POS, left: x + TEXT_X_POS}}>
+              <Box sx={{ typography: 'h3', color: '#f4cb85', position: 'relative', top: TITLE_Y_POS, left: TEXT_X_POS}}>
                   { songName }
               </Box>
-              <Box sx={{ typography: 'p', color: '#f4cb85', position: 'relative', top: y + TITLE_Y_POS, left: x + TEXT_X_POS}}>
+              <Box sx={{ typography: 'p', color: '#f4cb85', position: 'relative', top: TITLE_Y_POS, left: TEXT_X_POS}}>
                   {`by ${artistName}`}
               </Box>
           </Typography>
-          <Note x={x+iconSize+25} y={y-200} size={noteSize}/>
+          <Note x={iconSize+25} y={-200} size={noteSize}/>
         </div>
       </Fade>
     </Box>
