@@ -11,14 +11,13 @@ import Note from './Note';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 const TITLE_Y_POS = -200;
-const TEXT_Y_POS = 80;
 const TEXT_X_POS = 150;
 const LOC_X_POS = -95;
 const LOC_Y_POS = -50;
 
 
 function Song(props) {
-  const { songName, artistName, albumArtLink, x, y, iconSize, noteSize} = props;
+  const { songName, artistName, x, y, iconSize, noteSize} = props;
 
   const [showText, setShowText] = React.useState(false);
   const testArt = 'https://media.pitchfork.com/photos/5f1e2abad421092dd8f6c7ca/1:1/w_320/Taylor_Swift_folklore.jpeg'
@@ -28,10 +27,6 @@ function Song(props) {
       console.log("ENTER");
   }
 
-  function onMouseLeave() {
-      setShowText(false);
-      console.log("LEAVE");
-  }
   return (
     <Box style={{ position: 'absolute', top: y, left: x}}>
       <Box
@@ -41,7 +36,7 @@ function Song(props) {
               },
           }}
       >
-        <img src={testArt} style={{ borderRadius: '50%'}} onClick={onMouseEnter} />
+        <img src={testArt} style={{ borderRadius: '50%'}} onClick={onMouseEnter} alt="test art"/>
       </Box>
       <LocationOnIcon sx={{ fontSize: 100, color: '#67bfcd', position: 'absolute', top: LOC_Y_POS, left: iconSize + LOC_X_POS, transform: 'rotate(15deg)'}}/>
       <Fade in={showText}>
