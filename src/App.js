@@ -1,6 +1,6 @@
-import './css/App.css';
+import './index.css';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Body from './Body';
+import Body from './components/Body';
 
 function App() {
   return (
