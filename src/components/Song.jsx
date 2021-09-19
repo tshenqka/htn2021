@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import '../index.css';
 import Box from '@mui/material/Box';
 // import { ParallaxProvider } from 'react-scroll-parallax';

@@ -1,15 +1,11 @@
 import * as React from 'react';
-    import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import '@fontsource/roboto/300.css';
-import { Parallax } from 'react-scroll-parallax';
-import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import Song from './Song';
 import Audio from './Audio';
 import Path from './Path';
 
 function SongList(props) {
-    const { playlist, creatorName } = props;
+    const { playlist } = props;
     const [alive, setAlive] = React.useState(false);
     const numSongs = playlist.length;
 
@@ -36,7 +32,7 @@ function SongList(props) {
                     initialNotes={playlist[i].notes}
                     />
             )
-            if (i != numSongs - 1) {
+            if (i !== numSongs - 1) {
                 songs.push(
                     <Path x1={X_OFFSETS[i]+ICON_SIZE/2} y1={650+i*250 + ICON_SIZE} x2={X_OFFSETS[i+1] + ICON_SIZE/2} y2={650+(i+1)*250 + ICON_SIZE}/>
                 )

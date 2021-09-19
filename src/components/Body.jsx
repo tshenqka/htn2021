@@ -3,7 +3,6 @@ import '../index.css';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Title from './Title';
 import Stars from './Stars';
-import Song from './Song';
 //import Audio from './Audio';
 import SongList from './SongList';
 import coda from '../coda';
