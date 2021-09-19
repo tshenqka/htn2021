@@ -32,9 +32,10 @@ function Body() {
         const token = localStorage.getItem('token');
         if (token !== null && token !== undefined && songs.length > 0) {
             console.log("MY TOKEN WOKEN: ", token);
+            var promises = [];
             for (var i = 0; i < songs.length; i++) {
                 const song = songs[i];
-                fetch(`https://api.spotify.com/v1/tracks/${song.songId}`, {
+                promises.push(fetch(`https://api.spotify.com/v1/tracks/${song.songId}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
@@ -54,10 +55,12 @@ function Body() {
                             albumArtLink: data.album.images[0].url
                         })
                     }
-                })
+                }))
             }
-            setSongsDetails(updatedSongs)
-            console.log("updated Songs: ", updatedSongs)
+            Promise.all(promises).then(_ => {
+                setSongsDetails(updatedSongs)
+                console.log("updated Songs: ", updatedSongs)
+            })
         }
         
     }, [songs])
@@ -66,7 +69,7 @@ function Body() {
         <ParallaxProvider>
             <Title playlistName="Best Playlist Ever" creatorName="Wolgang Amadeus Mozart"></Title>
             <Stars/>
-            { songs.length > 0 && 
+            { songsDetails.length > 0 && 
                 <SongList playlist={songsDetails}/>
             }
 

@@ -7,9 +7,11 @@ import Path from './Path';
 function SongList(props) {
     const { playlist } = props;
     const [alive, setAlive] = React.useState(false);
+    const [songId, setSongId] = React.useState(false);
     const numSongs = playlist.length;
 
-    function startSong() {
+    function startSong(newSongId) {
+        setSongId(newSongId)
         setAlive(true);
     }
 
@@ -28,6 +30,8 @@ function SongList(props) {
                     startSong={startSong}
                     albumArtLink={playlist[i].albumArtLink || DEFAULT_ART}
                     initialNotes={playlist[i].notes}
+                    songId={playlist[i].songId}
+                    rowId={playlist[i].id}
                     />
             )
             if (i !== numSongs - 1) {
@@ -42,7 +46,7 @@ function SongList(props) {
     return (
         <div style={{width: '100%', alignItems: 'center', position: 'absolute', top: 0}}>
             {renderSongs()}
-            <Audio alive={alive} />
+            <Audio alive={alive} songId={songId}/>
         </div>
         
     )

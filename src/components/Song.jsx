@@ -16,12 +16,12 @@ const LOC_X_POS = -95;
 const LOC_Y_POS = -50;
 
 function Song(props) {
-  const { songName, artistName, albumArtLink, x, y, iconSize, noteSize, initialNotes, rowId} = props;
+  const { songName, artistName, albumArtLink, x, y, iconSize, noteSize, initialNotes, rowId, startSong, songId} = props;
 
   const [showText, setShowText] = React.useState(false);
   
   function onMouseEnter() {
-      //startSong();
+      startSong(songId);
       setShowText(!showText);
       console.log("ENTER");
   }

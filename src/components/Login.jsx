@@ -61,7 +61,7 @@ function Login(props) {
     
     return(
         <div>
-         {!token && (
+         {!(token !== '' && token !== 'undefined' && token !== undefined) && (
             <a
                 className="btn btn--loginApp-link"
                 href={authRedirectUrl}
@@ -69,7 +69,7 @@ function Login(props) {
             Login to Spotify
             </a>
          )}
-         {token && (
+         {(token !== '' && token !== 'undefined' && token !== undefined) && (
              <Body />
          )}
         </div>
