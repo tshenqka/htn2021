@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import '../index.css';
 import Box from '@mui/material/Box';
 // import { ParallaxProvider } from 'react-scroll-parallax';
@@ -15,13 +15,11 @@ const TEXT_X_POS = 240;
 const LOC_X_POS = -95;
 const LOC_Y_POS = -50;
 
-
 function Song(props) {
-  const { songName, artistName, albumArtLink, x, y, iconSize, noteSize} = props;
+  const { songName, artistName, albumArtLink, x, y, iconSize, noteSize, initialNotes, rowId} = props;
 
   const [showText, setShowText] = React.useState(false);
   
-
   function onMouseEnter() {
       //startSong();
       setShowText(!showText);
@@ -53,7 +51,7 @@ function Song(props) {
                 {`by ${artistName}`}
             </Box>
           </Typography>
-          <Note x={iconSize+25} y={-200} size={noteSize}/>
+          <Note x={iconSize+25} y={-200} size={noteSize} initialNotes={initialNotes} rowId={rowId}/>
           </div>
         </Fade>
       </div>

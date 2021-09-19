@@ -9,19 +9,23 @@ import Audio from './Audio';
 import Path from './Path';
 
 function SongList(props) {
-    const { playlistName, creatorName } = props;
+    const { playlist, creatorName } = props;
     const [alive, setAlive] = React.useState(false);
-    const numSongs = 10;
+    const numSongs = playlist.length;
 
     function startSong() {
         setAlive(true);
     }
+
+    console.log("PLAYLIST: ", playlist)
 
     const testArt = 'https://media.pitchfork.com/photos/5f1e2abad421092dd8f6c7ca/1:1/w_320/Taylor_Swift_folklore.jpeg'
     const X_OFFSETS = [100, 800, 200, 900, 150, 700, 100, 1000, 200, 600, 150, 700];
     const ICON_SIZE = 200
     function renderSongs() {
         var songs = []
+        if (playlist.length <= 0) return <div></div>
+        else console.log(playlist[0]);
         for (var i = 0; i < numSongs; i++) {
             songs.push(
                 <Song x={X_OFFSETS[i]} y={650+i*250} iconSize={ICON_SIZE} noteSize={300} 
@@ -29,6 +33,7 @@ function SongList(props) {
                     artistName="Taylor Swift"
                     startSong={startSong}
                     albumArtLink={testArt}
+                    initialNotes={playlist[i].notes}
                     />
             )
             if (i != numSongs - 1) {
