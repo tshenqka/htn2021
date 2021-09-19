@@ -10,6 +10,9 @@ function App() {
           <Route exact path="/">
             <Body/>
           </Route>
+          <Route path="/docs/:docId">
+            <Body/>
+          </Route>
         </Switch>
       </div>
     </Router>
