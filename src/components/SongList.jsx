@@ -18,7 +18,7 @@ function SongList(props) {
     }
 
 
-    const X_OFFSETS = [50, 600, 150, 550, 200, 700, 100, 500, 200, 600, 150, 700;
+    const X_OFFSETS = [50, 600, 150, 550, 200, 700, 100, 500, 200, 600, 150, 700];
     const ICON_SIZE = 200;
     const DEFAULT_ART = 'https://i.pinimg.com/564x/a6/28/41/a62841f3bcd0487230c7f15c9c20a564.jpg';
     function renderSongs() {
