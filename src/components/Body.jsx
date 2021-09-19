@@ -12,9 +12,15 @@ function Body() {
 
     const [songs, setSongs] = React.useState([]);
     const [songsDetails, setSongsDetails] = React.useState([]);
+    const [playlistName, setPlaylistName] = React.useState("")
+    const [creatorName, setCreatorName] = React.useState("")
 
     useEffect(() => {
         var newSongs = []
+        coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => {
+            setPlaylistName(table.name.split(" - ")[0])
+            setCreatorName(table.name.split(" - by ")[1])
+        }))
         coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => table.listRows({useColumnNames: true}).then(res => {
             res.forEach(row => {
                 newSongs.push({id: row.id,
@@ -32,9 +38,10 @@ function Body() {
         const token = localStorage.getItem('token');
         if (token !== null && token !== undefined && songs.length > 0) {
             console.log("MY TOKEN WOKEN: ", token);
+            var promises = [];
             for (var i = 0; i < songs.length; i++) {
                 const song = songs[i];
-                fetch(`https://api.spotify.com/v1/tracks/${song.songId}`, {
+                promises.push(fetch(`https://api.spotify.com/v1/tracks/${song.songId}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${token}`
@@ -54,19 +61,23 @@ function Body() {
                             albumArtLink: data.album.images[0].url
                         })
                     }
-                })
+                }))
             }
-            setSongsDetails(updatedSongs)
-            console.log("updated Songs: ", updatedSongs)
+            Promise.all(promises).then(_ => {
+                setSongsDetails(updatedSongs)
+                console.log("updated Songs: ", updatedSongs)
+            })
         }
         
     }, [songs])
 
     return (
         <ParallaxProvider>
-            <Title playlistName="Best Playlist Ever" creatorName="Wolgang Amadeus Mozart"></Title>
+            { playlistName !== "" && 
+                <Title playlistName={playlistName} creatorName={creatorName}></Title>
+            }
             <Stars/>
-            { songs.length > 0 && 
+            { songsDetails.length > 0 && 
                 <SongList playlist={songsDetails}/>
             }
 
