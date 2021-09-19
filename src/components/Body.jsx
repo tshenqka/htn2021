@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../index.css';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Title from './Title';
