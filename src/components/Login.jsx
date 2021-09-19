@@ -64,7 +64,7 @@ function Login(props) {
         <div>
          {!(token !== '' && token !== 'undefined' && token !== undefined) && (
             <div style={{width: "100vw", height: "100vh"}}>
-                <Button variant="contained" href={authRedirectUrl} style={{marginTop: '50%'}}>
+                <Button variant="contained" href={authRedirectUrl} style={{marginTop: '50vh'}}>
                     Login to Spotify
                 </Button>
             </div>
