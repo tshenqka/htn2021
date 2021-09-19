@@ -1,17 +1,14 @@
 import './index.css';
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
-import Body from './components/Body';
+import Login from './components/Login';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/">
-            <Body/>
-          </Route>
-          <Route path="/docs/:docId">
-            <Body/>
+          <Route path="/">
+            <Login/>
           </Route>
         </Switch>
       </div>
