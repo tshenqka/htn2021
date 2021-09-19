@@ -12,9 +12,15 @@ function Body() {
 
     const [songs, setSongs] = React.useState([]);
     const [songsDetails, setSongsDetails] = React.useState([]);
+    const [playlistName, setPlaylistName] = React.useState("")
+    const [creatorName, setCreatorName] = React.useState("")
 
     useEffect(() => {
         var newSongs = []
+        coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => {
+            setPlaylistName(table.name.split(" - ")[0])
+            setCreatorName(table.name.split(" - by ")[1])
+        }))
         coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => table.listRows({useColumnNames: true}).then(res => {
             res.forEach(row => {
                 newSongs.push({id: row.id,
@@ -67,7 +73,9 @@ function Body() {
 
     return (
         <ParallaxProvider>
-            <Title playlistName="Best Playlist Ever" creatorName="Wolgang Amadeus Mozart"></Title>
+            { playlistName !== "" && 
+                <Title playlistName={playlistName} creatorName={creatorName}></Title>
+            }
             <Stars/>
             { songsDetails.length > 0 && 
                 <SongList playlist={songsDetails}/>
