@@ -15,7 +15,7 @@ function Path(props) {
             setPosX(x2);
         }
         console.log({x1, x2, angle});
-    }, [])
+    }, [angle, x1, x2])
     
     console.log(angle);
     return (

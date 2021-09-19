@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import SpotifyPlayer from 'react-spotify-web-playback';
-import Button from '@mui/material/Button';
 
 function Audio(props) {
   const { alive } = props;
-  const [play, setPlay] = React.useState(false);
+  //const [play, setPlay] = React.useState(false);
   // const [alive, setAlive] = React.useState(false);
   const token = localStorage.getItem('token');
   if (token != null) {

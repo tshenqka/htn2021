@@ -4,16 +4,12 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import Title from './Title';
 import Stars from './Stars';
 import Song from './Song';
-import Audio from './Audio';
+//import Audio from './Audio';
 import SongList from './SongList';
 import coda from '../coda';
 
 function Body() {
-    const [alive, setAlive] = React.useState(false);
-
-    function startSong() {
-        setAlive(true);
-    }
+    //const [alive, setAlive] = React.useState(false);
 
     const [songs, setSongs] = React.useState([]);
 

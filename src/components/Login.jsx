@@ -1,5 +1,4 @@
-import react, {useEffect, useState}from 'react';
-import Box from '@mui/material/Box';
+import {useEffect, useState} from 'react';
 import '@fontsource/roboto/300.css';
 import { useLocation } from 'react-router-dom'
 import { Base64 } from 'js-base64';
@@ -57,7 +56,7 @@ function Login(props) {
             }
         }
         
-    }, []);
+    }, [location.search]);
 
     
     return(
