@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 import { Base64 } from 'js-base64';
 import localStorage from 'localStorage';
 import Body from './Body'
+import Button from '@mui/material/Button';
 
 export const authEndpoint = 'https://accounts.spotify.com/authorize';
 
@@ -62,12 +63,11 @@ function Login(props) {
     return(
         <div>
          {!(token !== '' && token !== 'undefined' && token !== undefined) && (
-            <a
-                className="btn btn--loginApp-link"
-                href={authRedirectUrl}
-            >
-            Login to Spotify
-            </a>
+            <div style={{width: "100vw", height: "100vh"}}>
+                <Button variant="contained" href={authRedirectUrl} style={{marginTop: '50%'}}>
+                    Login to Spotify
+                </Button>
+            </div>
          )}
          {(token !== '' && token !== 'undefined' && token !== undefined) && (
              <Body />
