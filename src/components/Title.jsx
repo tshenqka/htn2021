@@ -15,9 +15,9 @@ function Title(props) {
                     <Box sx={{ typography: 'h2', color: '#f4cb85'}}>
                         { playlistName }
                     </Box>
-                    <Box sx={{ typography: 'p',  color: '#f4cb85'}}>
+                    {creatorName !== "" && (<Box sx={{ typography: 'p',  color: '#f4cb85'}}>
                         by { creatorName }
-                    </Box>
+                    </Box>)}
                 </Typography>
             </Parallax>
         </div>

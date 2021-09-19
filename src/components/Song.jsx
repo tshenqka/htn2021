@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../index.css';
 import Box from '@mui/material/Box';
 // import { ParallaxProvider } from 'react-scroll-parallax';
@@ -16,12 +16,12 @@ const LOC_X_POS = -95;
 const LOC_Y_POS = -50;
 
 function Song(props) {
-  const { songName, artistName, albumArtLink, x, y, iconSize, noteSize, initialNotes, rowId, docId, tableId} = props;
+  const { songName, artistName, albumArtLink, currentSong, x, y, iconSize, noteSize, initialNotes, rowId, docId, tableId, startSong, songId} = props;
 
-  const [showText, setShowText] = React.useState(false);
+  const [showText, setShowText] = useState(false);
   
   function onMouseEnter() {
-      //startSong();
+      startSong(songId);
       setShowText(!showText);
       console.log("ENTER");
   }
@@ -38,13 +38,13 @@ function Song(props) {
         >
           <img src={albumArtLink} style={{ borderRadius: '50%'}} onClick={onMouseEnter} alt="test art"/>
         </Box>
-        <LocationOnIcon sx={{ fontSize: 100, color: '#67bfcd', position: 'absolute', top: LOC_Y_POS, left: iconSize + LOC_X_POS, transform: 'rotate(15deg)'}}/>
+        {(currentSong === songId) && <LocationOnIcon sx={{ fontSize: 100, color: '#ec7c51', position: 'absolute', top: LOC_Y_POS, left: iconSize + LOC_X_POS, transform: 'rotate(15deg)'}}/>}
       </div>
       <div>
         <Fade in={showText}>
           <div>
           <Typography component="div">
-            <Box sx={{ typography: 'h3', color: '#f4cb85', position: 'relative', top: TITLE_Y_POS, left: TEXT_X_POS, textAlign: 'left'}}>
+            <Box sx={{ typography: 'h4', color: '#f4cb85', position: 'relative', top: TITLE_Y_POS, left: TEXT_X_POS, textAlign: 'left'}}>
                 { songName }
             </Box>
             <Box sx={{ typography: 'p', color: '#f4cb85', position: 'relative', top: TITLE_Y_POS, left: TEXT_X_POS, textAlign: 'left'}}>

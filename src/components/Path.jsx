@@ -14,15 +14,16 @@ function Path(props) {
         if (x2 < x1) {
             setPosX(x2);
         }
+       // console.log({x1, x2, angle});
     }, [angle, x1, x2])
-    
+   
     return (
         <Box style={{
             position:'absolute',
             top: y1,
             left: posX,
             transform: `rotate(${angle}deg)`,
-            backgroundColor: '#67bfcd            ',
+            backgroundColor: '#67bfcd',
             height: '5px',
             width: length,
             zIndex: 0,

@@ -29,7 +29,7 @@ function Login(props) {
         
         // first, try getting token from local storage
         const localToken = localStorage.getItem('token');
-        if (localToken != null) {
+        if (localToken !== null && localToken !== undefined && localToken !== 'undefined') {
             setToken(localToken);
             console.log("token gotten from local storage: ", localToken);
         } else {
@@ -61,7 +61,7 @@ function Login(props) {
     
     return(
         <div>
-         {!token && (
+         {!(token !== '' && token !== 'undefined' && token !== undefined) && (
             <a
                 className="btn btn--loginApp-link"
                 href={authRedirectUrl}
@@ -69,7 +69,7 @@ function Login(props) {
             Login to Spotify
             </a>
          )}
-         {token && (
+         {(token !== '' && token !== 'undefined' && token !== undefined) && (
              <Body />
          )}
         </div>

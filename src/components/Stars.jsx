@@ -16,7 +16,7 @@ function renderStar() {
     return (
         <Parallax y={[getRandom(VERTICAL_DISTANCES), getRandom(VERTICAL_DISTANCES)]}>
             <CircleSharpIcon sx={{fontSize: getRandom(STAR_SIZES), color:'#f4cb85'}} 
-                style={{marginTop: getRandom(VERTICAL_DISTANCES), 
+                style={{marginTop: getRandom(VERTICAL_DISTANCES)-45, 
                 marginLeft: `${getHorizontalDistance()}%`}}/>
         </Parallax>
     );

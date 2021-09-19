@@ -2,7 +2,7 @@ import React from 'react';
 import SpotifyPlayer from 'react-spotify-web-playback';
 
 function Audio(props) {
-  const { alive } = props;
+  const { alive, songId } = props;
   //const [play, setPlay] = React.useState(false);
   // const [alive, setAlive] = React.useState(false);
   const token = localStorage.getItem('token');
@@ -14,7 +14,7 @@ function Audio(props) {
             token={token}
             initialVolume={0.1}
             play={true}
-            uris={['spotify:track:2xizRhme7pYeITbH1NLLGt']}
+            uris={['spotify:track:'+songId]}
           />
         )}
         {/* <Button onClick={() => setAlive(true)}>Test</Button> */}
