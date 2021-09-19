@@ -15,22 +15,20 @@ function SongList(props) {
         setAlive(true);
     }
 
-    console.log("PLAYLIST: ", playlist)
-
-    const testArt = 'https://media.pitchfork.com/photos/5f1e2abad421092dd8f6c7ca/1:1/w_320/Taylor_Swift_folklore.jpeg'
     const X_OFFSETS = [100, 800, 200, 900, 150, 700, 100, 1000, 200, 600, 150, 700];
-    const ICON_SIZE = 200
+    const ICON_SIZE = 200;
+    const DEFAULT_ART = 'https://i.pinimg.com/564x/a6/28/41/a62841f3bcd0487230c7f15c9c20a564.jpg';
     function renderSongs() {
         var songs = []
+        console.log("rendering: ", playlist);
         if (playlist.length <= 0) return <div></div>
-        else console.log(playlist[0]);
         for (var i = 0; i < numSongs; i++) {
             songs.push(
                 <Song x={X_OFFSETS[i]} y={650+i*250} iconSize={ICON_SIZE} noteSize={300} 
-                    songName="Willow"
-                    artistName="Taylor Swift"
+                    songName={playlist[i].songName || ''}
+                    artistName={playlist[i].artistName || ''}
                     startSong={startSong}
-                    albumArtLink={testArt}
+                    albumArtLink={playlist[i].albumArtLink || DEFAULT_ART}
                     initialNotes={playlist[i].notes}
                     songId={playlist[i].songId}
                     rowId={playlist[i].id}
@@ -41,7 +39,6 @@ function SongList(props) {
                     <Path x1={X_OFFSETS[i]+ICON_SIZE/2} y1={650+i*250 + ICON_SIZE} x2={X_OFFSETS[i+1] + ICON_SIZE/2} y2={650+(i+1)*250 + ICON_SIZE}/>
                 )
             }
-            
         }
         return (<div style={{ width: 800, position: 'relative'}}> { songs } </div>);
     }

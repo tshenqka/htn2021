@@ -38,13 +38,13 @@ function Song(props) {
         >
           <img src={albumArtLink} style={{ borderRadius: '50%'}} onClick={onMouseEnter} alt="test art"/>
         </Box>
-        <LocationOnIcon sx={{ fontSize: 100, color: '#67bfcd', position: 'absolute', top: LOC_Y_POS, left: iconSize + LOC_X_POS, transform: 'rotate(15deg)'}}/>
+        <LocationOnIcon sx={{ fontSize: 100, color: '#ec7c51', position: 'absolute', top: LOC_Y_POS, left: iconSize + LOC_X_POS, transform: 'rotate(15deg)'}}/>
       </div>
       <div>
         <Fade in={showText}>
           <div>
           <Typography component="div">
-            <Box sx={{ typography: 'h3', color: '#f4cb85', position: 'relative', top: TITLE_Y_POS, left: TEXT_X_POS, textAlign: 'left'}}>
+            <Box sx={{ typography: 'h4', color: '#f4cb85', position: 'relative', top: TITLE_Y_POS, left: TEXT_X_POS, textAlign: 'left'}}>
                 { songName }
             </Box>
             <Box sx={{ typography: 'p', color: '#f4cb85', position: 'relative', top: TITLE_Y_POS, left: TEXT_X_POS, textAlign: 'left'}}>
