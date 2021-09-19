@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../index.css';
 import { ParallaxProvider } from 'react-scroll-parallax';
 import Title from './Title';
@@ -11,6 +11,7 @@ function Body() {
     //const [alive, setAlive] = React.useState(false);
 
     const [songs, setSongs] = React.useState([]);
+    //const [locAppear, setLocAppear] = useState(false);
 
     useEffect(() => {
         coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => table.listRows({useColumnNames: true}).then(res => {
@@ -27,7 +28,7 @@ function Body() {
 
     return (
         <ParallaxProvider>
-            <Title playlistName="Best Playlist Ever" creatorName="Wolgang Amadeus Mozart"></Title>
+            <Title playlistName="Best Playlist Ever" creatorName="Julia Victor Christopher Kang"></Title>
             <Stars/>
             { songs.length > 0 && 
                 <SongList playlist={songs}/>

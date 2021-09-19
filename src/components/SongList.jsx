@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import '@fontsource/roboto/300.css';
 import Song from './Song';
 import Audio from './Audio';
@@ -6,20 +6,22 @@ import Path from './Path';
 
 function SongList(props) {
     const { playlist } = props;
-    const [alive, setAlive] = React.useState(false);
-    const [songId, setSongId] = React.useState(false);
+    const [alive, setAlive] = useState(false);
+    const [songId, setSongId] = useState(false);
+    const [currentSong, setCurrentSong] = useState('');
     const numSongs = playlist.length;
 
     function startSong(newSongId) {
         setSongId(newSongId)
         setAlive(true);
+        setCurrentSong(newSongId);
     }
 
     console.log("PLAYLIST: ", playlist)
 
     const testArt = 'https://media.pitchfork.com/photos/5f1e2abad421092dd8f6c7ca/1:1/w_320/Taylor_Swift_folklore.jpeg'
-    const X_OFFSETS = [100, 800, 200, 900, 150, 700, 100, 1000, 200, 600, 150, 700];
-    const ICON_SIZE = 200
+    const X_OFFSETS = [50, 600, 150, 550, 200, 700, 100, 500, 200, 600, 150, 700];
+    const ICON_SIZE = 200;
     function renderSongs() {
         var songs = []
         if (playlist.length <= 0) return <div></div>
@@ -30,6 +32,7 @@ function SongList(props) {
                     songName="Willow"
                     artistName="Taylor Swift"
                     startSong={startSong}
+                    currentSong={currentSong}
                     albumArtLink={testArt}
                     initialNotes={playlist[i].notes}
                     songId={playlist[i].songId}
