@@ -5,7 +5,7 @@ import Audio from './Audio';
 import Path from './Path';
 
 function SongList(props) {
-    const { playlist } = props;
+    const { playlist, docId, tableId } = props;
     const [alive, setAlive] = useState(false);
     const [songId, setSongId] = useState(false);
     const [currentSong, setCurrentSong] = useState('');
@@ -34,6 +34,8 @@ function SongList(props) {
                     currentSong={currentSong}
                     albumArtLink={playlist[i].albumArtLink || DEFAULT_ART}
                     initialNotes={playlist[i].notes}
+                    docId={docId}
+                    tableId={tableId}
                     songId={playlist[i].songId}
                     rowId={playlist[i].id}
                     />

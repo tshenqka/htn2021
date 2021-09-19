@@ -6,31 +6,60 @@ import Stars from './Stars';
 //import Audio from './Audio';
 import SongList from './SongList';
 import coda from '../coda';
+import { useLocation } from 'react-router';
 
 function Body() {
     //const [alive, setAlive] = React.useState(false);
 
     const [songs, setSongs] = React.useState([]);
+    const location = useLocation();
+    const [docId, setDocId] = React.useState([]);
+    const [tableId, setTableId] = React.useState(null);
     const [songsDetails, setSongsDetails] = React.useState([]);
     const [playlistName, setPlaylistName] = React.useState("")
     const [creatorName, setCreatorName] = React.useState("")
 
     useEffect(() => {
         var newSongs = []
-        coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => {
-            setPlaylistName(table.name.split(" - ")[0])
-            setCreatorName(table.name.split(" - by ")[1])
-        }))
-        coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => table.listRows({useColumnNames: true}).then(res => {
-            res.forEach(row => {
-                newSongs.push({id: row.id,
-                    songId: row.values.SongId,
-                    notes: row.values.Notes,
+        const tempDocId = location.pathname.split("/")[2]
+        if (tempDocId !== null && tempDocId !== undefined) {
+            setPlaylistName("loading")
+            setDocId(tempDocId)
+            coda.getDoc(tempDocId).then(doc => doc.listTables().then(tables => doc.getTable(tables[0].id).then(table => {
+                setTableId(tables[0].id);
+                setPlaylistName(table.name.split(" - ")[0])
+                setCreatorName(table.name.split(" - by ")[1])
+                return table.listRows({useColumnNames: true}).then(res => {
+                    res.forEach(row => {
+                        newSongs.push({id: row.id,
+                            songId: row.values.SongId,
+                            notes: row.values.Notes,
+                        })
+                    })
+                    setSongs(newSongs)
                 })
-            })
-            setSongs(newSongs)
-        })))
-    }, [])
+            })))
+        } else {
+            setPlaylistName("Failed")
+        }
+    }, [location])
+
+    // useEffect(() => {
+    //     var newSongs = []
+    //     coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => {
+    //         setPlaylistName(table.name.split(" - ")[0])
+    //         setCreatorName(table.name.split(" - by ")[1])
+    //     }))
+    //     coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => table.listRows({useColumnNames: true}).then(res => {
+    //         res.forEach(row => {
+    //             newSongs.push({id: row.id,
+    //                 songId: row.values.SongId,
+    //                 notes: row.values.Notes,
+    //             })
+    //         })
+    //         setSongs(newSongs)
+    //     })))
+    // }, [])
 
     useEffect(() => {
         var updatedSongs = [];
@@ -73,12 +102,15 @@ function Body() {
 
     return (
         <ParallaxProvider>
-            { playlistName !== "" && 
+            { (playlistName !== "" && playlistName !== "loading" && playlistName !== "Failed") && 
                 <Title playlistName={playlistName} creatorName={creatorName}></Title>
+            }
+            { playlistName === "Failed" &&
+                <Title playlistName={"Please go to /docs/<doc_id>"} creatorName={""}></Title>
             }
             <Stars/>
             { songsDetails.length > 0 && 
-                <SongList playlist={songsDetails}/>
+                <SongList playlist={songsDetails} docId={docId} tableId={tableId}/>
             }
 
       </ParallaxProvider>

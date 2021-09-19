@@ -7,7 +7,10 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route exact path="/">
+          <Route path="/">
+            <Login/>
+          </Route>
+          <Route path="/docs/:docId">
             <Login/>
           </Route>
         </Switch>

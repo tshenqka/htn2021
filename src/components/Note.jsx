@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import coda from '../coda'
 
 function Note(props) {
-  const { x, y, size, initialNotes, rowId} = props;
+  const { x, y, size, initialNotes, rowId, docId, tableId} = props;
   const [value, setValue] = useState('Personal Note');
 
   useEffect(() => {
@@ -14,7 +14,7 @@ function Note(props) {
 
   const handleChange = (event) => {
     setValue(event.target.value);
-    coda.getDoc('19Z2_he_i3').then(doc => doc.getTable('grid-sS3AhHHpH1').then(table => table.updateRow(rowId, {Notes: event.target.value})))
+    coda.getDoc(docId).then(doc => doc.getTable(tableId).then(table => table.updateRow(rowId, {Notes: event.target.value})))
   };
 
   return (

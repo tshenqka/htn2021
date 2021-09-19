@@ -1,12 +1,15 @@
-# Getting Started with Create React App
+# Songful++
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Sharing songs with our friends is one of the special ways of bonding, but sometimes, we want to share more than just a list of songs in a playlist. Each song often holds a different memory, experience, or meaning to everyone, and we want to showcase that. This is where the idea of songful++ comes in. It is a music playlist with a story.
 
-## Available Scripts
+songful++ takes a list of songs from any given Coda document and displays it on a visually appealing map. Users can share their stories through their playlists with others, or enjoy by themselves. To see more details on a song, users can click on the corresponding "planets". Users can also edit the personal note attached to each song.
 
-In the project directory, you can run:
+**Note**: due to the restrictions of Spotify's API, we only allow select users to be able to access the app. Please email one of the authors to give you a token or whitelist your account to try it out.
 
-### `npm start`
+## Run the app
+
+- `npm install`
+- `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -14,60 +17,42 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
-### `npm test`
+The live site is at https://suspicious-lichterman-1fb24e.netlify.app/ but again, you will need special access to login.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Components
 
-### `npm run build`
+### Login
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Checks if user is logged in by checking localStorage for saved token. If not, sends user to Spotify sign-in, gets the auth code from redirect, and gets/saves a token for later use.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Body
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Container holding all other components after logging in. Pulls list of songs from Coda document and sends to SongList component to render. Also asks Spotify for song information (name, artist, cover img) which needs Spotify token.
 
-### `npm run eject`
+### Title
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Display title and author of playlist
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### SongList
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Positions all of the Song components and delegates changes of which song is currently being played.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Audio
 
-## Learn More
+Plays audio and responds to song changes. Needs Spotify token to work.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Song
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Contains the components representing one song. Fires event when clicked for component fading and audio changes.
 
-### Code Splitting
+### Note
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Contains a personal note for each song. Changes made are automatically sent to Coda document in real-time.
 
-### Analyzing the Bundle Size
+### Stars
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Add stars to background with parallax effect
 
-### Making a Progressive Web App
+### Path
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-
-## Hello :)
+Display path connecting songs

@@ -16,7 +16,7 @@ const LOC_X_POS = -95;
 const LOC_Y_POS = -50;
 
 function Song(props) {
-  const { songName, artistName, albumArtLink, currentSong, x, y, iconSize, noteSize, initialNotes, rowId, startSong, songId} = props;
+  const { songName, artistName, albumArtLink, currentSong, x, y, iconSize, noteSize, initialNotes, rowId, docId, tableId, startSong, songId} = props;
 
   const [showText, setShowText] = useState(false);
   
@@ -51,7 +51,7 @@ function Song(props) {
                 {`by ${artistName}`}
             </Box>
           </Typography>
-          <Note x={iconSize+25} y={-200} size={noteSize} initialNotes={initialNotes} rowId={rowId}/>
+          <Note x={iconSize+25} y={-200} size={noteSize} initialNotes={initialNotes} rowId={rowId} docId={docId} tableId={tableId}/>
           </div>
         </Fade>
       </div>
