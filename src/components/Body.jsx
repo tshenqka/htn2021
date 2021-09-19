@@ -17,6 +17,7 @@ function Body() {
             var newSongs = []
             res.forEach(row => {
                 newSongs.push({id: row.id,
+                    songId: row.values.SongId,
                     notes: row.values.Notes})
             })
             setSongs(newSongs)
