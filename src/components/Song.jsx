@@ -15,20 +15,19 @@ const TEXT_X_POS = 240;
 const LOC_X_POS = -95;
 const LOC_Y_POS = -50;
 
-
 function Song(props) {
   const { songName, artistName, albumArtLink, x, y, iconSize, noteSize, initialNotes, rowId} = props;
 
   const [showText, setShowText] = React.useState(false);
-  // const testArt = 'https://media.pitchfork.com/photos/5f1e2abad421092dd8f6c7ca/1:1/w_320/Taylor_Swift_folklore.jpeg'
-
+  
   function onMouseEnter() {
+      //startSong();
       setShowText(!showText);
       console.log("ENTER");
   }
 
   return (
-    <Box style={{ position: 'absolute', top: y, left: x}}>
+    <Box style={{ position: 'absolute', top: y, left: x, zIndex: 100000}}>
       <div>
         <Box
             sx={{
