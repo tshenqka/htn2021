@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../index.css';
 import Box from '@mui/material/Box';
 // import { ParallaxProvider } from 'react-scroll-parallax';
@@ -38,7 +38,7 @@ function Song(props) {
         >
           <img src={albumArtLink} style={{ borderRadius: '50%'}} onClick={onMouseEnter} alt="test art"/>
         </Box>
-        {(currentSong == songId) && <LocationOnIcon sx={{ fontSize: 100, color: '#ec7c51', position: 'absolute', top: LOC_Y_POS, left: iconSize + LOC_X_POS, transform: 'rotate(15deg)'}}/>}
+        {(currentSong === songId) && <LocationOnIcon sx={{ fontSize: 100, color: '#ec7c51', position: 'absolute', top: LOC_Y_POS, left: iconSize + LOC_X_POS, transform: 'rotate(15deg)'}}/>}
       </div>
       <div>
         <Fade in={showText}>
